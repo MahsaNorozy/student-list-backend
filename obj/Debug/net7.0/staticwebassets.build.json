@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "kDvS2aAzoR1TfzcUQer2XSrKCZfMDoyira5S4tY+Sqo=",
+  "Source": "student-list-backend",
+  "BasePath": "_content/student-list-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
