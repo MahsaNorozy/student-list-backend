@@ -2,14 +2,13 @@ namespace student_list_backend.Models;
 
 public class Student
 {
-    public int Id { get; set; }                 // id
-    public string Address { get; set; }         // address
-    public string Email { get; set; }           // email
-    public string Gender { get; set; }          // gender
-    public List<Grade> Grades { get; set; }     // grades
-    public string MatriculationNumber { get; set; } // matriculationNumber
-    public string Name { get; set; }            // name
-    public string PhotoUrl { get; set; }        // photoUrl
-    public string Program { get; set; }         // program
-    public int Semester { get; set; }           // semester
+    public int Id { get; set; }
+    public string Address { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public Gender Gender { get; set; }
+    public List<Grade> Grades { get; set; } = new();
+    public string MatriculationNumber { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Program { get; set; } = string.Empty;
+    public int Semester { get; set; }
 }
