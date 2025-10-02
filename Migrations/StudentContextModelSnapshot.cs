@@ -45,6 +45,35 @@ namespace student_list_backend.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("Grades");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CourseName = "Mathe 1",
+                            Date = "2024-02-10",
+                            GradeValue = "1.3",
+                            IsPassed = true,
+                            StudentId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CourseName = "Programmierung",
+                            Date = "2024-02-15",
+                            GradeValue = "2.0",
+                            IsPassed = true,
+                            StudentId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CourseName = "Mechanik",
+                            Date = "2024-03-12",
+                            GradeValue = "2.3",
+                            IsPassed = true,
+                            StudentId = 2
+                        });
                 });
 
             modelBuilder.Entity("student_list_backend.Models.Student", b =>
@@ -82,6 +111,30 @@ namespace student_list_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Musterstraße 1, 12345 Berlin",
+                            Email = "anna@beispiel.de",
+                            Gender = 1,
+                            MatriculationNumber = "1234567",
+                            Name = "Anna Schmidt",
+                            Program = "Informatik",
+                            Semester = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Beispielweg 2, 54321 Hamburg",
+                            Email = "max@beispiel.de",
+                            Gender = 2,
+                            MatriculationNumber = "2345678",
+                            Name = "Max Müller",
+                            Program = "Maschinenbau",
+                            Semester = 3
+                        });
                 });
 
             modelBuilder.Entity("student_list_backend.Models.Grade", b =>
