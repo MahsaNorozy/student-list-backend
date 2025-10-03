@@ -1,4 +1,4 @@
-using HotChocolate;                   
+using HotChocolate;
 using Microsoft.EntityFrameworkCore;
 using student_list_backend.Contexts;
 using student_list_backend.Models;
@@ -22,7 +22,7 @@ public class Mutation
             {
                 CourseName = g.CourseName,
                 GradeValue = g.GradeValue,
-                Date = g.Date,       
+                Date = g.Date,
                 IsPassed = g.IsPassed
             }).ToList()
         };
@@ -46,7 +46,7 @@ public class Mutation
         s.Semester = input.Semester;
 
         ctx.Grades.RemoveRange(s.Grades);
-        await ctx.SaveChangesAsync(); 
+        await ctx.SaveChangesAsync();
 
         var newGrades = input.Grades.Select(g => new Grade
         {

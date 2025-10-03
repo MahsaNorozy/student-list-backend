@@ -1,4 +1,4 @@
-using HotChocolate;                   
+using HotChocolate;
 using Microsoft.EntityFrameworkCore;
 using student_list_backend.Contexts;
 using student_list_backend.Models;
