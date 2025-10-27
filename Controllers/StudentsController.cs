@@ -73,12 +73,30 @@ public class StudentsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteStudent(int id)
     {
-        var student = await _context.Students.FindAsync(id);
+        var student = await _context.Students
+            .Include(s => s.Grades)
+            .FirstOrDefaultAsync(s => s.Id == id);
+
         if (student == null)
             return NotFound();
 
-        _context.Students.Remove(student);
-        await _context.SaveChangesAsync();
+        // Sicher in einer Transaktion löschen
+        using var tx = await _context.Database.BeginTransactionAsync();
+        try
+        {
+            if (student.Grades != null && student.Grades.Count > 0)
+                _context.Grades.RemoveRange(student.Grades);
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+
+            await tx.CommitAsync();
+        }
+        catch
+        {
+            await tx.RollbackAsync();
+            throw;
+        }
 
         return NoContent();
     }

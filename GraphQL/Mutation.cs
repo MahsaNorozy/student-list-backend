@@ -63,5 +63,18 @@ public class Mutation
         return s;
     }
 
+    public async Task<bool> DeleteStudent([Service] StudentContext ctx, int id)
+    {
+        var s = await ctx.Students.Include(x => x.Grades).FirstOrDefaultAsync(x => x.Id == id);
+        if (s is null) return false;
+
+        // Zuerst zugehörige Noten entfernen (falls FK mit Cascade nicht konfiguriert)
+        ctx.Grades.RemoveRange(s.Grades);
+        ctx.Students.Remove(s);
+
+        await ctx.SaveChangesAsync();
+        return true;
+    }
+
 }
 
