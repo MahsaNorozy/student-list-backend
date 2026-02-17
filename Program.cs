@@ -8,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("frontend", p =>
-        p.WithOrigins("http://localhost:5173", "http://localhost:3000") // Frontend-Dev-URLs
+    // Frontend-Dev-URLs
+        p.WithOrigins("http://localhost:5173",   // Vite dev
+         "http://localhost:4173",  // Vite preview
+         "http://localhost:3000") 
          .AllowAnyHeader()
          .AllowAnyMethod()
     //.AllowCredentials() // für Cookies/Auth 
